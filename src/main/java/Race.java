@@ -26,14 +26,17 @@ public class Race {
          int speed;
         while (true) {
             System.out.printf("— Введите скорость машины №%d:%n", carNumber);
-            speed = scanner.nextInt();
-            System.out.println("\n");
-            if (speed > 0 && speed < 250) {
-                break;
+            try {
+                speed = Integer.parseInt(scanner.next());
+                System.out.println("\n");
+                if (speed >= 0 && speed <= 250) {
+                    break;
+                }
+                throw new Exception();
+            } catch (Exception e) {
+                System.out.println("— Неправильная скорость");
+                System.out.println("\n");
             }
-            System.out.println("— Неправильная скорость");
-            System.out.println("\n");
-
         }
         return speed;
     }
